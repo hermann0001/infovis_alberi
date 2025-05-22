@@ -1,0 +1,72 @@
+[
+  {
+    "id": 0,
+    "trunk": 60,
+    "crown": 40,
+    "fruit": 10,
+    "root": 30
+  },
+  {
+    "id": 1,
+    "trunk": 90,
+    "crown": 55,
+    "fruit": 25,
+    "root": 50
+  },
+  {
+    "id": 2,
+    "trunk": 33,
+    "crown": 20,
+    "fruit": 15,
+    "root": 20
+  },
+  {
+    "id": 3,
+    "trunk": 75,
+    "crown": 60,
+    "fruit": 30,
+    "root": 60
+  },
+  {
+    "id": 4,
+    "trunk": 45,
+    "crown": 25,
+    "fruit": 18,
+    "root": 15
+  },
+  {
+    "id": 5,
+    "trunk": 80,
+    "crown": 45,
+    "fruit": 12,
+    "root": 25
+  },
+  {
+    "id": 6,
+    "trunk": 50,
+    "crown": 50,
+    "fruit": 20,
+    "root": 30
+  },
+  {
+    "id": 7,
+    "trunk": 38,
+    "crown": 35,
+    "fruit": 16,
+    "root": 40
+  },
+  {
+    "id": 8,
+    "trunk": 65,
+    "crown": 40,
+    "fruit": 28,
+    "root": 45
+  },
+  {
+    "id": 9,
+    "trunk": 55,
+    "crown": 30,
+    "fruit": 14,
+    "root": 22
+  }
+]
