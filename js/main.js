@@ -1,6 +1,7 @@
 const svg = d3.select("svg");
 const fruitColors = ["#FF6347", "#FFA500", "#FF69B4", "#9ACD32", "#8A2BE2", "#D40820"];
 
+let sorted = null;
 let width = window.innerWidth;
 let spacing = width / 10;
 let height = window.innerHeight;
@@ -12,13 +13,17 @@ window.addEventListener("resize", () => {
   height = window.innerHeight;
   console.log("New width:", width, "New spacing:", spacing);
 
+  if (!sorted) return;
+
   svg.selectAll("g")
-  .transition()
-  .duration(500)
-  .attr("transform", (d, i) => `translate(${spacing * i + spacing / 2}, ${height / 2})`);
+    .data(sorted, d => d.id)
+    .transition()
+    .duration(500)
+    .attr("transform", (d, i) => `translate(${spacing * i + spacing / 2}, ${height / 2})`);
 });
 
 d3.json("data/dataset.json").then(data => {
+  sorted = data
 
   const trunkScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.trunk))
@@ -36,6 +41,7 @@ d3.json("data/dataset.json").then(data => {
     .domain(d3.extent(data, d => d.root))
     .range([10, 40]);
 
+
   // assing each fruit a random color and position in crown
   data.forEach(d => {
     d.fruitColors = fruitColors[Math.floor(Math.random() * fruitColors.length)];
@@ -46,9 +52,10 @@ d3.json("data/dataset.json").then(data => {
     d.fruitOffsetY = Math.sin(angle) * radius;
   });
 
-  const treeGroup = svg.selectAll("g")
+  const treeGroup = svg.selectAll("g.tree")
     .data(data, d => d.id)
     .join("g")
+    .attr("class", "tree")
     .attr("transform", (d, i) => `translate(${spacing * i + spacing / 2}, ${height / 2})`);
 
   // draw trunk
@@ -100,12 +107,14 @@ d3.json("data/dataset.json").then(data => {
   // number the trees
   treeGroup.append("text")
     .attr("class", "tree-id")
-    .text(d => d.id);
+    .attr("y", d => 30)
+    .text(d => `Tree ${d.id}`);
 
   function sortBy(key) {
-    const sorted = [...data].sort((a, b) => a[key] - b[key]);
+    sorted = [...sorted].sort((a, b) => a[key] - b[key]);
     console.log("sorted by:", key, sorted);
-    svg.selectAll("g")
+
+    svg.selectAll("g.tree")
       .data(sorted, d => d.id)
       .transition()
       .duration(1000)
