@@ -10,6 +10,18 @@ svg {
     display: block;
 }
 
+.trunk {
+    fill: #8b4513;
+}
+
+.crown {
+    fill: #228B22;
+}
+
+.root {
+    fill: #A0522D;
+}
+
 .trunk:hover,
 .crown:hover,
 .fruit:hover,
@@ -17,4 +29,10 @@ svg {
     stroke: black;
     stroke-width: 2px;
     cursor: pointer;
+}
+
+.tree-id {
+    text-anchor: middle;
+    font-size: 12px;
+    fill: black;
 }
